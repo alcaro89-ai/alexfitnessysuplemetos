@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import InputForm from "@/components/InputForm";
 import ResultsDashboard from "@/components/ResultsDashboard";
 import { calculate, type UserData, type Results } from "@/lib/fitness-calculations";
+import logo from "@/assets/logo.png";
 
 export default function Index() {
   const [results, setResults] = useState<Results | null>(null);
@@ -33,9 +34,7 @@ export default function Index() {
           transition={{ duration: 0.6 }}
           className="text-center space-y-2"
         >
-          <h1 className="text-4xl md:text-6xl font-display font-black tracking-[0.15em] gradient-neon-text">
-            NEON-FIT AI
-          </h1>
+          <img src={logo} alt="Alex Fitness Suplementos" className="h-16 md:h-24 mx-auto object-contain" />
           <p className="font-body text-lg text-muted-foreground tracking-wide">
             Tu dashboard de fitness con inteligencia artificial
           </p>
@@ -63,7 +62,7 @@ export default function Index() {
 
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground font-body pt-8 pb-4 tracking-wider">
-          NEON-FIT AI — Fórmulas: Mifflin-St Jeor · IMC · Hidratación 35ml/kg
+          AlexFitnessSuplementos.es — Fórmulas: Mifflin-St Jeor · IMC · Hidratación 35ml/kg
         </footer>
       </div>
     </div>
