@@ -62,7 +62,7 @@ export default function Index() {
 
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground font-body pt-8 pb-4 tracking-wider">
-          NEON-FIT AI — Fórmulas: Mifflin-St Jeor · IMC · Hidratación 35ml/kg
+          AlexFitnessSuplementos.es — Fórmulas: Mifflin-St Jeor · IMC · Hidratación 35ml/kg
         </footer>
       </div>
     </div>
