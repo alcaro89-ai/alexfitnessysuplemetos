@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import InputForm from "@/components/InputForm";
 import ResultsDashboard from "@/components/ResultsDashboard";
 import { calculate, type UserData, type Results } from "@/lib/fitness-calculations";
-import logo from "@/assets/logo.png";
 
 export default function Index() {
   const [results, setResults] = useState<Results | null>(null);
@@ -34,9 +33,11 @@ export default function Index() {
           transition={{ duration: 0.6 }}
           className="text-center space-y-2"
         >
-          <img src={logo} alt="Alex Fitness Suplementos" className="h-16 md:h-24 mx-auto object-contain" />
+          <h1 className="text-3xl md:text-5xl font-display font-bold gradient-neon-text tracking-wider">
+            AlexFitnessySuplementos
+          </h1>
           <p className="font-body text-lg text-muted-foreground tracking-wide">
-            Tu dashboard de fitness con inteligencia artificial
+            Consola de biotecnología deportiva de élite
           </p>
         </motion.header>
 
@@ -52,9 +53,6 @@ export default function Index() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <h2 className="text-2xl font-display font-bold text-center text-secondary text-glow-purple tracking-[0.2em] mb-6">
-                TUS RESULTADOS
-              </h2>
               <ResultsDashboard results={results} />
             </motion.div>
           )}
@@ -62,7 +60,7 @@ export default function Index() {
 
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground font-body pt-8 pb-4 tracking-wider">
-          AlexFitnessSuplementos.es — Fórmulas: Mifflin-St Jeor · IMC · Hidratación 35ml/kg
+          AlexFitnessySuplementos — Fórmulas: Mifflin-St Jeor · Katch-McArdle · Du Bois · IMC · Hidratación 35ml/kg
         </footer>
       </div>
     </div>

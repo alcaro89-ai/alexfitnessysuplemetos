@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import type { UserData, Sex, ActivityLevel } from "@/lib/fitness-calculations";
+import type { UserData, Sex, ActivityLevel, TrainingLevel } from "@/lib/fitness-calculations";
 
 interface Props {
   onSubmit: (data: UserData) => void;
@@ -14,12 +14,21 @@ const activityOptions: { value: ActivityLevel; label: string }[] = [
   { value: "very_active", label: "Muy Activo (2x día)" },
 ];
 
+const levelOptions: { value: TrainingLevel; label: string }[] = [
+  { value: "beginner", label: "Principiante (<1 año)" },
+  { value: "intermediate", label: "Intermedio (1-3 años)" },
+  { value: "advanced", label: "Avanzado (3+ años)" },
+];
+
 export default function InputForm({ onSubmit }: Props) {
   const [age, setAge] = useState("");
   const [sex, setSex] = useState<Sex>("male");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
+  const [waist, setWaist] = useState("");
   const [activity, setActivity] = useState<ActivityLevel>("moderate");
+  const [trainingLevel, setTrainingLevel] = useState<TrainingLevel>("intermediate");
+  const [trainingHour, setTrainingHour] = useState("17");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +38,10 @@ export default function InputForm({ onSubmit }: Props) {
       sex,
       weight: Number(weight),
       height: Number(height),
+      waist: waist ? Number(waist) : undefined,
       activity,
+      trainingLevel,
+      trainingHour: Number(trainingHour),
     });
   };
 
@@ -45,7 +57,7 @@ export default function InputForm({ onSubmit }: Props) {
       className="glass rounded-2xl p-6 md:p-8 neon-border-cyan space-y-5 max-w-lg mx-auto"
     >
       <h2 className="text-2xl font-display font-bold text-primary text-glow-cyan text-center tracking-wider">
-        DATOS PERSONALES
+        ESCÁNER BIOMÉTRICO
       </h2>
 
       <div className="grid grid-cols-2 gap-4">
@@ -85,14 +97,30 @@ export default function InputForm({ onSubmit }: Props) {
         </div>
       </div>
 
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-display text-muted-foreground mb-1 tracking-widest uppercase">Cintura (cm)</label>
+          <input type="number" placeholder="80" value={waist} onChange={(e) => setWaist(e.target.value)} className={inputClass} min={40} max={200} />
+        </div>
+        <div>
+          <label className="block text-sm font-display text-muted-foreground mb-1 tracking-widest uppercase">Hora Entreno</label>
+          <input type="number" placeholder="17" value={trainingHour} onChange={(e) => setTrainingHour(e.target.value)} className={inputClass} min={0} max={23} />
+        </div>
+      </div>
+
       <div>
         <label className="block text-sm font-display text-muted-foreground mb-1 tracking-widest uppercase">Nivel de Actividad</label>
-        <select
-          value={activity}
-          onChange={(e) => setActivity(e.target.value as ActivityLevel)}
-          className={inputClass + " cursor-pointer"}
-        >
+        <select value={activity} onChange={(e) => setActivity(e.target.value as ActivityLevel)} className={inputClass + " cursor-pointer"}>
           {activityOptions.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-sm font-display text-muted-foreground mb-1 tracking-widest uppercase">Nivel de Entrenamiento</label>
+        <select value={trainingLevel} onChange={(e) => setTrainingLevel(e.target.value as TrainingLevel)} className={inputClass + " cursor-pointer"}>
+          {levelOptions.map((o) => (
             <option key={o.value} value={o.value}>{o.label}</option>
           ))}
         </select>
@@ -104,7 +132,7 @@ export default function InputForm({ onSubmit }: Props) {
         type="submit"
         className="w-full py-4 rounded-xl font-display font-bold text-lg tracking-widest uppercase gradient-neon text-primary-foreground glow-cyan transition-all"
       >
-        ⚡ CALCULAR
+        ⚡ ANALIZAR
       </motion.button>
     </motion.form>
   );
