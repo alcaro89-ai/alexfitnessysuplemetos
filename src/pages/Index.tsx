@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import InputForm from "@/components/InputForm";
 import ResultsDashboard from "@/components/ResultsDashboard";
 import { calculate, type UserData, type Results } from "@/lib/fitness-calculations";
+import sharkLogo from "@/assets/shark-logo.png";
 
 export default function Index() {
   const [results, setResults] = useState<Results | null>(null);
