@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import InputForm from "@/components/InputForm";
 import ResultsDashboard from "@/components/ResultsDashboard";
 import { calculate, type UserData, type Results } from "@/lib/fitness-calculations";
+import sharkLogo from "@/assets/shark-logo.png";
 
 export default function Index() {
   const [results, setResults] = useState<Results | null>(null);
@@ -58,8 +59,33 @@ export default function Index() {
           )}
         </AnimatePresence>
 
+        {/* Sponsor section with logo */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex flex-col items-center gap-4 pt-12 pb-6"
+        >
+          <img
+            src={sharkLogo}
+            alt="AlexFitnessySuplementos - Patrocinador oficial Zumub España"
+            className="w-48 md:w-64 h-auto drop-shadow-[0_0_30px_hsl(var(--neon-cyan)/0.5)]"
+          />
+          <a
+            href="https://www.alexfitnessysuplementos.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-display text-base md:text-lg gradient-neon-text tracking-widest hover:opacity-80 transition-opacity"
+          >
+            www.alexfitnessysuplementos.es
+          </a>
+          <p className="font-body text-sm md:text-base text-neon-lime tracking-wider uppercase">
+            Patrocinador oficial de Zumub España
+          </p>
+        </motion.section>
+
         {/* Footer */}
-        <footer className="text-center text-xs text-muted-foreground font-body pt-8 pb-4 tracking-wider">
+        <footer className="text-center text-xs text-muted-foreground font-body pt-4 pb-4 tracking-wider">
           AlexFitnessySuplementos — Fórmulas: Mifflin-St Jeor · Katch-McArdle · Du Bois · IMC · Hidratación 35ml/kg
         </footer>
       </div>
