@@ -2,15 +2,20 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import InputForm from "@/components/InputForm";
 import ResultsDashboard from "@/components/ResultsDashboard";
+import IntelligentDiagnosis from "@/components/IntelligentDiagnosis";
 import { calculate, type UserData, type Results } from "@/lib/fitness-calculations";
+import { generateDiagnosis, type Diagnosis } from "@/lib/diagnosis";
 import sharkLogo from "@/assets/shark-logo.png";
 import zumubLogo from "@/assets/zumub-logo.png";
 
 export default function Index() {
   const [results, setResults] = useState<Results | null>(null);
+  const [diagnosis, setDiagnosis] = useState<Diagnosis | null>(null);
 
   const handleSubmit = (data: UserData) => {
-    setResults(calculate(data));
+    const r = calculate(data);
+    setResults(r);
+    setDiagnosis(generateDiagnosis(data, r));
   };
 
   return (
@@ -56,6 +61,21 @@ export default function Index() {
               exit={{ opacity: 0 }}
             >
               <ResultsDashboard results={results} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Intelligent Diagnosis */}
+        <AnimatePresence>
+          {diagnosis && (
+            <motion.div
+              key="diagnosis"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <IntelligentDiagnosis diagnosis={diagnosis} />
             </motion.div>
           )}
         </AnimatePresence>
