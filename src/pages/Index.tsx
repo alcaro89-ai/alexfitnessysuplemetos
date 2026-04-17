@@ -4,6 +4,7 @@ import InputForm from "@/components/InputForm";
 import ResultsDashboard from "@/components/ResultsDashboard";
 import { calculate, type UserData, type Results } from "@/lib/fitness-calculations";
 import sharkLogo from "@/assets/shark-logo.png";
+import zumubLogo from "@/assets/zumub-logo.png";
 
 export default function Index() {
   const [results, setResults] = useState<Results | null>(null);
@@ -82,6 +83,14 @@ export default function Index() {
           <p className="font-body text-sm md:text-base text-neon-lime tracking-wider uppercase">
             Patrocinador oficial de Zumub España
           </p>
+          <a
+            href="https://www.zumub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 rounded-lg bg-white px-6 py-3 shadow-[0_0_30px_hsl(var(--neon-cyan)/0.4)] hover:shadow-[0_0_50px_hsl(var(--neon-cyan)/0.7)] transition-shadow"
+          >
+            <img src={zumubLogo} alt="Zumub" className="h-8 md:h-10 w-auto" />
+          </a>
         </motion.section>
 
         {/* Footer */}
