@@ -75,7 +75,7 @@ export default function Index() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <IntelligentDiagnosis diagnosis={diagnosis} />
+              {results && <IntelligentDiagnosis diagnosis={diagnosis} results={results} />}
             </motion.div>
           )}
         </AnimatePresence>
