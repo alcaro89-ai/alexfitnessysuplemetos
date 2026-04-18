@@ -42,14 +42,15 @@ const ShareCard = forwardRef<HTMLDivElement, Props>(({ diagnosis, results, userN
           Mi Diagnóstico Fitness
         </div>
         <div style={{
-          fontSize: 64,
+          fontSize: 44,
           fontWeight: 900,
           background: "linear-gradient(90deg, #00f0ff, #be00ff, #b6ff00)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          letterSpacing: 4,
+          letterSpacing: 3,
+          whiteSpace: "nowrap",
         }}>
-          ALEXFITNESSY
+          ALEXFITNESSYSUPLEMENTOS
         </div>
         {userName && (
           <div style={{ fontSize: 36, marginTop: 20, color: "#b6ff00", letterSpacing: 3 }}>
