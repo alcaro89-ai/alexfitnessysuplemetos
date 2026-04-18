@@ -115,7 +115,7 @@ export default function Index() {
 
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground font-body pt-4 pb-4 tracking-wider">
-          AlexFitnessySuplementos — Fórmulas: Mifflin-St Jeor · Katch-McArdle · Du Bois · IMC · Hidratación 35ml/kg
+          AlexFitnessySuplementos — 2026 — alexfitnessysuplementos@protonmail.com
         </footer>
       </div>
     </div>
